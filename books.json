@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Senhor dos Aneis",
+        "id": 1,
+        "author": "Tolkien",
+        "publicationYear": 321
+    },
+    {
+        "title": "The Hobbit",
+        "id": 2,
+        "author": "Tolkien too",
+        "publicationYear": 1933
+    }
+]
