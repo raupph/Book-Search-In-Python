@@ -1,5 +1,6 @@
-from typing import List
+from typing import List, Tuple
 import json
+
 
 # Book class definition
 class Book:
@@ -13,7 +14,7 @@ class Book:
     def __str__(self):
         # Returns a string representation of the book
         return f"ID: {self.id} | Title: {self.title} | Author: {self.author} | Year: {self.publicationYear}"
-
+    
 
 # Displays the main menu and returns the user's option
 def MainMenu():
@@ -95,44 +96,8 @@ def loadFromJson(filename="books.json") -> List[Book]:
         with open(filename, "r") as file:
             booksAsDict = json.load(file)
             # Convert list of dictionaries back to list of Book objects
-            return [Book(**book) for book in booksAsDict]
+            booksAsObjects = [Book(**book) for book in booksAsDict]
+            return booksAsObjects
     except FileNotFoundError:
         print("⚠️ No saved book list found. Starting with an empty list.")
         return []
-
-
-# Initial book list with two predefined books
-bookList: List[Book] = loadFromJson()
-
-# Main loop to run the Book Manager
-while True:
-    option = MainMenu()
-
-    match option:
-        case "1":
-            # Option to add a book
-            print("Adding book...")
-            addBook(bookList)
-
-        case "2":
-            # Option to list all books
-            print("Listing books...")
-            showBooks(bookList)
-
-        case "3":
-            # Option to search for a specific book
-            print("Searching book...")
-            searchBook(bookList)
-
-        case "4":
-            # Option to remove a book
-            print("Remove book...")
-            removeBook(bookList)
-
-        case "q" | "Q":
-            # Quit the program
-            break
-
-        case _:
-            # Invalid input handler
-            print("Invalid option, try again.")

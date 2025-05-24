@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment folders
+venv/
+env/
+training/  # Se seu ambiente virtual é essa pasta, ignore ela também
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Editor configs
+.vscode/
+.idea/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# OS files
+.DS_Store
+Thumbs.db
+
+training/
