@@ -1,20 +1,14 @@
 [
     {
-        "title": "Senhor dos Aneis",
+        "title": "the hobbit",
         "id": 1,
-        "author": "Tolkien",
-        "publicationYear": 321
-    },
-    {
-        "title": "The Hobbit",
-        "id": 2,
-        "author": "Tolkien too",
+        "author": "tolkien",
         "publicationYear": 1933
     },
     {
-        "title": "Acotar",
-        "id": 3,
-        "author": "dsad",
-        "publicationYear": 213
+        "title": "harry potter",
+        "id": 2,
+        "author": "j.k rowling",
+        "publicationYear": 1999
     }
 ]

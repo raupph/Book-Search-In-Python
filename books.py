@@ -33,9 +33,9 @@ def MainMenu():
 # Adds a new book to the list
 def addBook(bookList: List[Book]):
     # Prompt user for book details
-    title = input("Enter the book title: ")
+    title = input("Enter the book title: ").lower()
     id = int(input("Enter the book ID (number): "))
-    author = input("Enter the author's name: ")
+    author = input("Enter the author's name: ").lower()
     publicationYear = int(input("Enter the publication year: "))
 
     # Create new Book object and append to list
