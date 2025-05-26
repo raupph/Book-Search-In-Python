@@ -25,4 +25,8 @@ dist/
 .DS_Store
 Thumbs.db
 
+#Virtual Ambient
 training/
+
+#Jupyter notebook
+.ipynb_checkpoints/

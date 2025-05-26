@@ -10,5 +10,29 @@
         "id": 2,
         "author": "j.k rowling",
         "publicationYear": 1999
+    },
+    {
+        "title": "1984",
+        "id": 15,
+        "author": "George Orwell",
+        "publicationYear": 1949
+    },
+    {
+        "title": "Book 1",
+        "id": 26,
+        "author": "Author 1",
+        "publicationYear": 2020
+    },
+    {
+        "title": "Book 2",
+        "id": 27,
+        "author": "Author 2",
+        "publicationYear": 2021
+    },
+    {
+        "title": "Lord of Rings",
+        "id": 40,
+        "author": "tolkien",
+        "publicationYear": 1933
     }
 ]
