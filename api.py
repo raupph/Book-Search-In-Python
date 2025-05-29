@@ -169,6 +169,49 @@ def addBook():
 
     return jsonify(newBok), 201
 
+@app.route('/books/remove', methods=['DELETE'])
+def removeBook():
+    """
+    Remove a book by title or id
+    ---
+    parameters:
+      - name: title
+        in: query
+        type: string
+        required: false
+        description: Title of the book to remove
+      - name: id
+        in: query
+        type: integer
+        required: false
+        description: ID of the book to remove
+    responses:
+      200:
+        description: Book removed successfully
+      404:
+        description: No matching book found
+    """
+    bookList: List[dict] = loadBooks()
+    originalLength = len(bookList)
+
+    title = request.args.get("title")
+    book_id = request.args.get("id")
+
+    filteredBooks = []
+    #Search for title and ID
+    for book in bookList:
+        if book_id and str(book.get("id")) == str(book_id):
+            continue
+        elif title and title.lower() in book.get("title", "").lower():
+            continue
+        #Apend all books that
+        filteredBooks.append(book)
+
+    if len(filteredBooks) == originalLength:
+        return jsonify({"message": "No matching book found to remove."}), 404
+
+    saveToJson([Book(**books) for books in filteredBooks])
+    return jsonify({"message": "Book removed successfully."}), 200
 
 if __name__ == "__main__":
     app.run(port=5000, host='localhost', debug=True)
