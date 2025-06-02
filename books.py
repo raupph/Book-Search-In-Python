@@ -18,98 +18,68 @@ class Book:
 
 # Displays the main menu and returns the user's option
 def MainMenu():
-    print("\n" + "="*40)
-    print("\033[1;36m📚  Welcome to Book Manager  📚\033[0m")
-    print("="*40)
-    print("\033[1;33m[1]\033[0m  ➕  Add a book")
-    print("\033[1;33m[2]\033[0m  📋  List all books")
-    print("\033[1;33m[3]\033[0m  🔍  Search for a book")
-    print("\033[1;33m[4]\033[0m  ❌  Remove a book")
-    print("\033[1;31m[Q]\033[0m  🚪  Quit")
-    print("-"*40)
-    option = input("\033[1;32m👉 Choose an option: \033[0m")
-    print("\n")
+    print("==============================")
+    print("📚 Welcome to Book Manager 📚")
+    print("==============================")
+    print("1  Add a book")
+    print("2  List all books")
+    print("3  Search for a book")
+    print("4  Remove a book")
+    print("Q  to Quit ❌")
+    option = input("👉 Choose an option: ")
     return option
 
-# Helper: Validate book fields
-def validate_book_fields(title, id, author, publicationYear, bookList):
-    if not title or not author:
-        print("\033[1;31m[Error]\033[0m Title and author cannot be empty.")
-        return False
-    if not isinstance(id, int) or id <= 0:
-        print("\033[1;31m[Error]\033[0m ID must be a positive integer.")
-        return False
-    if not isinstance(publicationYear, int) or publicationYear <= 0:
-        print("\033[1;31m[Error]\033[0m Publication year must be a positive integer.")
-        return False
-    if any(book.id == id for book in bookList):
-        print(f"\033[1;31m[Error]\033[0m A book with ID {id} already exists.")
-        return False
-    return True
 
 # Adds a new book to the list
 def addBook(bookList: List[Book]):
-    """Adds a new book to the list, with data validation and error handling."""
-    try:
-        title = input("Enter the book title: ").strip().lower()
-        id_str = input("Enter the book ID (number): ").strip()
-        id = int(id_str)
-        author = input("Enter the author's name: ").strip().lower()
-        year_str = input("Enter the publication year: ").strip()
-        publicationYear = int(year_str)
-    except ValueError:
-        print("\033[1;31m[Error]\033[0m ID and year must be integers.")
-        return
-    if not validate_book_fields(title, id, author, publicationYear, bookList):
-        return
-    newBook = Book(title, id, author, publicationYear)
-    bookList.append(newBook)
-    print(f'\033[1;32mBook "{title}" added successfully!\033[0m')
+    # Prompt user for book details
+    title = input("Enter the book title: ").lower()
+    id = int(input("Enter the book ID (number): "))
+    author = input("Enter the author's name: ").lower()
+    publicationYear = int(input("Enter the publication year: "))
+
+    # Create new Book object and append to list
+    newBok = Book(title, id, author, publicationYear)
+    bookList.append(newBok)
+
+    print(f'Book "{title}" added successfully!')
+
     saveToJson(bookList)
+
 
 # Lists all books in the book list
 def showBooks(bookList: List[Book]):
-    if not bookList:
-        print("\033[1;33mNo books registered.\033[0m")
-        return
-    print("\n\033[1;36mBook List:\033[0m")
     for book in bookList:
-        print(f'  {book}')
-    print()
+        print(f'Book: {book.title}')
 
-# Removes a book from the list by title or ID (case insensitive)
+
+# Removes a book from the list by title (case insensitive)
 def removeBook(bookList: List[Book]):
-    print("\nYou can remove by title or ID.")
-    user_input = input("Enter the title or ID of the book to remove: ").strip().lower()
-    found = False
-    for book in bookList:
-        if user_input == str(book.id).lower() or user_input == book.title.lower():
-            confirm = input(f'Are you sure you want to remove "{book.title}" (ID: {book.id})? [y/N]: ').strip().lower()
-            if confirm == 'y':
-                bookList.remove(book)
-                print(f'\033[1;31mBook "{book.title}" removed ❌\033[0m')
-                saveToJson(bookList)
-                found = True
-                break
-            else:
-                print("Removal cancelled.")
-                return
-    if not found:
-        print(f'\033[1;33mNo book found matching "{user_input}".\033[0m')
+    bookToRemove = input("Write the book title to remove: ").lower()
 
-# Searches for a book by title or ID (case insensitive, partial search)
-def searchBook(bookList: List[Book]):
-    search_input = input("Enter part of the title or the book ID to search: ").strip().lower()
-    results = []
     for book in bookList:
-        if search_input in book.title.lower() or search_input == str(book.id).lower():
-            results.append(book)
-    if results:
-        print(f'\033[1;32m{len(results)} book(s) found:\033[0m')
-        for book in results:
-            print(f'  {book}')
-    else:
-        print(f'\033[1;33mNo books found for "{search_input}".\033[0m')
+        # Compare lowercased input with book titles
+        if bookToRemove == book.title.lower():
+            bookList.remove(book)
+            print(f'Book {book.title} removed ❌')
+            saveToJson(bookList)
+            return
+
+    print(f'Could not find the {bookToRemove} in the books list ❌')
+
+
+# Searches for a book by title (case insensitive)
+def searchBook(bookList: List[Book]):
+    searchTitle = input("Write the book title to search: ").lower()
+
+    for book in bookList:
+        # Compare lowercased input with book titles
+        if searchTitle == book.title.lower():
+            print(f'Book found...')
+            print(book)
+            return
+
+    print(f'Book {searchTitle} not found ❌')
 
 # Saves the current book list to a JSON file
 def saveToJson(bookList: List[Book], filename="books.json"):
