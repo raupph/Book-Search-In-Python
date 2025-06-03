@@ -1,8 +1,92 @@
 [
     {
         "title": "harry potter",
-        "id": 2,
+        "id": 1,
         "author": "j.k rowling",
         "publicationYear": 1999
+    },
+    {
+        "title": "the lord of the rings",
+        "id": 2,
+        "author": "j.r.r. tolkien",
+        "publicationYear": 1954
+    },
+    {
+        "title": "to kill a mockingbird",
+        "id": 3,
+        "author": "harper lee",
+        "publicationYear": 1960
+    },
+    {
+        "title": "1984",
+        "id": 4,
+        "author": "george orwell",
+        "publicationYear": 1949
+    },
+    {
+        "title": "the great gatsby",
+        "id": 5,
+        "author": "f. scott fitzgerald",
+        "publicationYear": 1925
+    },
+    {
+        "title": "pride and prejudice",
+        "id": 6,
+        "author": "jane austen",
+        "publicationYear": 1813
+    },
+    {
+        "title": "the catcher in the rye",
+        "id": 7,
+        "author": "j.d. salinger",
+        "publicationYear": 1951
+    },
+    {
+        "title": "the hobbit",
+        "id": 8,
+        "author": "j.r.r. tolkien",
+        "publicationYear": 1937
+    },
+    {
+        "title": "moby dick",
+        "id": 9,
+        "author": "herman melville",
+        "publicationYear": 1851
+    },
+    {
+        "title": "war and peace",
+        "id": 10,
+        "author": "leo tolstoy",
+        "publicationYear": 1869
+    },
+    {
+        "title": "the alchemist",
+        "id": 11,
+        "author": "paulo coelho",
+        "publicationYear": 1988
+    },
+    {
+        "title": "the da vinci code",
+        "id": 12,
+        "author": "dan brown",
+        "publicationYear": 2003
+    },
+    {
+        "title": "the little prince",
+        "id": 13,
+        "author": "antoine de saint-exupéry",
+        "publicationYear": 1943
+    },
+    {
+        "title": "animal farm",
+        "id": 14,
+        "author": "george orwell",
+        "publicationYear": 1945
+    },
+    {
+        "title": "don quixote",
+        "id": 15,
+        "author": "miguel de cervantes",
+        "publicationYear": 1605
     }
 ]
